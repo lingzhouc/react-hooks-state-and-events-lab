@@ -3,16 +3,19 @@ import Item from "./Item";
 
 function ShoppingList({ items }) {
 
-  // keep track of selected 
+  // keep track of selected category
   const [selectedCategory, setSelected] = useState("All")
 
   function selectCategory(event) {
     setSelected(event.target.value)
   }
 
+  // filter based on selected category
+  // new array for items in category
   const filteredOptions = items.filter(
     (item) => item.category === selectedCategory)
   
+  // displaying items (all or filtered)
   const food = selectedCategory === "All" ?  
     items.map((item) => (<Item key={item.id} name={item.name} category={item.category} />))  
     : filteredOptions.map((item) => (<Item key={item.id} name={item.name} category={item.category} />
